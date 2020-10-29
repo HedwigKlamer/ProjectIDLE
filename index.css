@@ -1,0 +1,20 @@
+body{
+  /* display: flex; */
+  /* background:rgba(76, 175, 80, 0.3); */
+  -webkit-app-region: drag  /*Makes app draggeble when windowless */
+
+}
+
+
+#dot {
+    height: 40px;
+    width: 40px;
+    margin: 30px;
+    background-color: #fcba03;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 1px 1px 15px rgba(255,160,0 ,1);
+    /* border-radius: 100%;
+    animation: inex 3s infinite linear ; */
+    -webkit-app-region: no-drag; /*Makes button still work when windowless but draggeble */
+  }
