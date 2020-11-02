@@ -9,10 +9,7 @@ function createWindow () {
     height: 180,
     icon: __dirname + '/Sunrise_Icon_256.ico',
     frame: false,
-    transparent:true,
-    webPreferences: {
-      //preload: path.join(__dirname, 'preload.js')
-    }
+    transparent:true
   })
 
   // and load the index.html of the app.

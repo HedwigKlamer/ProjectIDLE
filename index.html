@@ -6,11 +6,12 @@
     <meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
     <meta http-equiv="X-Content-Security-Policy" content="default-src 'self'; script-src 'self'">
     <link rel="stylesheet" href="index.css">
-    <title>Sunrise!</title>
+    <title>Sunrise</title>
   </head>
   <body>
-
-    <span id="dot" onclick="resetTimer()">
+      
+    <span id="dot" class="popup" onclick="resetTimer(); hoverPopup();">
+      <span class="popuptext" id="myPopup">A Simple Popup!</span>
     </span>
 
     <!-- <p id="countdown">
