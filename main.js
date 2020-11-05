@@ -9,7 +9,9 @@ function createWindow () {
     height: 180,
     icon: __dirname + '/Sunrise_Icon_256.ico',
     frame: false,
-    transparent:true
+    transparent:true,
+    resizable:false,
+    alwaysOnTop:true
   })
 
   // and load the index.html of the app.
