@@ -1,4 +1,4 @@
-document.getElementById('myPopup').innerHTML = 000 + ":" + 10;
+document.getElementById('myPopup').innerHTML = 001 + ":" + 10;
 startTimer();
 var time; //Store timer in var so you can stop starting multiple timers
 
@@ -37,7 +37,7 @@ function checkSecond(sec) {
 function resetTimer() {
     console.log('reset timer activated');
     clearTimeout( time ) //Make sure there is only one timer going on
-    document.getElementById('myPopup').innerHTML = 000 + ":" + 10;
+    document.getElementById('myPopup').innerHTML = 001 + ":" + 10;
     document.getElementById("dot").style.backgroundColor = "#fcba03" ;
     document.getElementById("dot").style.boxShadow = "1px 1px 15px rgba(255,160,0 ,1)";
     document.getElementById("dot").classList.remove("glow");
@@ -48,5 +48,15 @@ function resetTimer() {
 function hoverPopup() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");
+  }
+
+  function breakMenu() {
+    console.log('breakMenu activated');
+    var element = document.getElementById("myBreakMenu");
+    var element2 = document.getElementById("myBreakMenu2");
+    var element3 = document.getElementById("myBreakMenu3");
+   element.classList.toggle("breakMenu");
+   element2.classList.toggle("breakMenu");
+   element3.classList.toggle("breakMenu");
   }
 

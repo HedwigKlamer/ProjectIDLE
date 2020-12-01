@@ -1,8 +1,13 @@
+:root {
+  --bg: #ffffff33;
+  --glow1: #4287f5;
+  --size: 1em; 
+}
+
 body{
   /* display: flex; */
   /* background:rgba(76, 175, 80, 0.3); */
-  -webkit-app-region: drag  /*Makes app draggeble when windowless */
-
+  -webkit-app-region: drag;  /*Makes app draggeble when windowless */
 }
 
 #dot {
@@ -11,6 +16,7 @@ body{
     margin: 50px 0px 0px 50px;
     background-color: #fcba03;
     border-radius: 50%;
+    position: relative;
     /* display: inline-block; */
     float: left;
     box-shadow: 1px 1px 15px rgba(255,160,0 ,1);
@@ -24,6 +30,27 @@ body{
   animation: morph 10s linear infinite;
 }
 
+.dragArea{
+  width: 100px;
+  height: 100px;
+  margin: 20px 0px 0px 20px;
+  /*background-color: #fc03d2;*/  /*debug to check if area is align correctly*/
+  border-radius: 50%;
+  position: absolute;
+  float: left;
+  -webkit-app-region: drag;
+}
+
+.breakMenu {
+  visibility: hidden;
+  
+}
+
+/* .breakMenu .see{
+  visibility: visible;
+  -webkit-animation: fadeIn 1s;
+  animation: fadeIn 1s;
+} */
 
 .accept{
   margin-top: 30px;
@@ -132,11 +159,11 @@ body{
   }
 }
 
-:root {
+/* :root {
   --bg: #ffffff33;
   --glow1: #4287f5;
   --size: 1em; 
-}
+} */
 
 .glow {
   width: var(--size)*0.8;
