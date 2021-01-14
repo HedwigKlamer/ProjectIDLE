@@ -1,4 +1,4 @@
-document.getElementById('myPopup').innerHTML = 001 + ":" + 10;
+document.getElementById('myPopup').innerHTML = 010 + ":" + 10; //how long is timer
 startTimer();
 var time; //Store timer in var so you can stop starting multiple timers
 
@@ -37,12 +37,27 @@ function checkSecond(sec) {
 function resetTimer() {
     console.log('reset timer activated');
     clearTimeout( time ) //Make sure there is only one timer going on
-    document.getElementById('myPopup').innerHTML = 001 + ":" + 10;
+    document.getElementById('myPopup').innerHTML = 010 + ":" + 10; //how long is new timer
     document.getElementById("dot").style.backgroundColor = "#fcba03" ;
     document.getElementById("dot").style.boxShadow = "1px 1px 15px rgba(255,160,0 ,1)";
     document.getElementById("dot").classList.remove("glow");
-        document.getElementById("dot").classList.add("dotAni")
+    document.getElementById("dot").classList.add("dotAni")
     startTimer();
+}
+
+function delayTimer() { //should add up 1 minute to timer but doesn't work
+    var presentTime = document.getElementById('myPopup').innerHTML;
+    var timeArray = presentTime.split(/[:]+/);
+    var m = timeArray[0];
+    var s = checkSecond((timeArray[1] - 1));
+    clearTimeout( time )
+    m=m+1
+    document.getElementById('myPopup').innerHTML =m + ":" + s;
+    startTimer();
+}
+
+function muteTimer(){
+    //i dunno where the start, maybe get element main.js to turn of always on top for an hour but all the timers are broken
 }
 
 function hoverPopup() {
