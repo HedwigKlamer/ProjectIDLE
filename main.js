@@ -1,10 +1,12 @@
 // Modules to control application life and create native browser window
-const {app, BrowserWindow} = require('electron')
+const {app, BrowserWindow, ipcMain} = require('electron')
 const path = require('path')
+
+let mainWindow
 
 function createWindow () {
   // Create the browser window.
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 180,
     height: 180,
     icon: __dirname + '/Sunrise_Icon_256.ico',
@@ -13,6 +15,9 @@ function createWindow () {
     resizable:false,
     fullscreen: false,
     fullscreenable: false,
+    webPreferences: {
+      nodeIntegration: true
+    },
     alwaysOnTop:true
   })
 
@@ -45,3 +50,12 @@ app.on('window-all-closed', function () {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+ipcMain.on('mute', (event, arg) => {
+  mainWindow.setAlwaysOnTop(false, 'normal')
+})
+
+ipcMain.on('unmute', (event, arg) => {
+  mainWindow.show();
+  mainWindow.setAlwaysOnTop(true, 'float')
+})
