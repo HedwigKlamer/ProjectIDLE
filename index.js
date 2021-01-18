@@ -2,9 +2,10 @@ const electron = require('electron');
 const {ipcRenderer} = electron;
 
 var timer; //Store timer in var so you can stop starting multiple timers
-var timeLeft = 600; //in seconds
+var timeLeft = 3600; //in seconds
 var timer_mute;
-document.getElementById('myPopup').innerHTML = 00 + ":" + 10; //how long is timer
+var muteCheck = false;
+document.getElementById('myPopup').innerHTML = 60 + ":" + 00; //how long is timer
 startTimer();
 
 
@@ -30,7 +31,7 @@ function startTimeUI(){
 }
 
 function breakTimeUI(){
-    document.getElementById("myPopup").innerHTML = "time for a break";
+    document.getElementById("myPopup").innerHTML = "take care";
     document.getElementById("dot").style.backgroundColor = "#6495ED" ;
     document.getElementById("dot").style.boxShadow = "1px 1px 15px rgba(227, 238, 255 ,1)";
     document.getElementById("dot").classList.remove("dotAni");
@@ -50,12 +51,15 @@ function startTimer() {
     timer = setTimeout(startTimer, 1000);
     updateTimeUI();
     // console.log(m)
+    if (muteCheck){
+        muteCheck = false;
+    }
 }
 
 function resetTimer() {
     console.log('reset timer activated');
     clearTimeout(timer); //Make sure there is only one timer going on
-    timeLeft = 10; 
+    timeLeft = 3600; 
     updateTimeUI();
     startTimeUI();
     // startTimer();
@@ -70,15 +74,17 @@ function delayTimer() {
     // timer = setTimeout(startTimer, 1000);
 }
 
-function timerMute(){
-    clearTimeout(timer);
-    timer_mute = setTimeout(timerUnmute, 3600000);
-    muteTimeUI();
-    // document.getElementById("dot").style.backgroundColor = "#ff0000" ;
-    // document.getElementById("myPopup").innerHTML = "muted";
-    breakMenu();
-    ipcRenderer.send('mute');
-    //i dunno where the start, maybe get element main.js to turn of always on top for an hour but all the timers are broken
+function timerMute(){   
+    if (!muteCheck){
+        clearTimeout(timer);
+        muteTimeUI();
+        breakMenu();
+        timer_mute = setTimeout(timerUnmute, 10000);
+        ipcRenderer.send('mute');
+        muteCheck=true;
+    } else{
+        resetTimer();
+    }
 }
 
 function timerUnmute(){
